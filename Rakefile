@@ -68,7 +68,7 @@ create_user_and_group_cmd = [
     ],
     before_install: [
       'apk --no-cache upgrade',
-      'apk add --no-cache openjdk8-jre-base git mercurial subversion openssh-client bash curl'
+      'apk add --no-cache openjdk8-jre-base git mercurial subversion openssh-client bash curl make'
     ]
   },
   {
@@ -81,7 +81,7 @@ create_user_and_group_cmd = [
       ],
       before_install: [
           'apk --no-cache upgrade',
-          'apk add --no-cache openjdk8-jre-base git mercurial subversion openssh-client bash curl'
+          'apk add --no-cache openjdk8-jre-base git mercurial subversion openssh-client bash curl make'
       ]
   },
   {
@@ -94,7 +94,7 @@ create_user_and_group_cmd = [
       'apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886',
       'apt-get update',
       'echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections',
-      'apt-get install -y oracle-java8-installer git subversion mercurial openssh-client bash unzip curl',
+      'apt-get install -y oracle-java8-installer git subversion mercurial openssh-client bash unzip curl make',
       'apt-get autoclean'
     ]
   },
@@ -108,7 +108,7 @@ create_user_and_group_cmd = [
       'apt-get update',
       # see https://bugs.debian.org/775775
       # and https://github.com/docker-library/java/issues/19#issuecomment-70546872
-      'apt-get install -y openjdk-8-jre-headless ca-certificates-java="20161107~bpo8+1" git subversion mercurial openssh-client bash unzip curl',
+      'apt-get install -y openjdk-8-jre-headless ca-certificates-java="20161107~bpo8+1" git subversion mercurial openssh-client bash unzip curl make',
       'apt-get autoclean',
       # see comment above
       '/var/lib/dpkg/info/ca-certificates-java.postinst configure'
@@ -123,7 +123,7 @@ create_user_and_group_cmd = [
       "echo deb 'http://ppa.launchpad.net/openjdk-r/ppa/ubuntu precise main' > /etc/apt/sources.list.d/openjdk-ppa.list",
       'apt-key adv --keyserver keyserver.ubuntu.com --recv-keys DA1A4A13543B466853BAF164EB9B1D8886F44E2A',
       'apt-get update',
-      'apt-get install -y openjdk-8-jre-headless git subversion mercurial openssh-client bash unzip curl',
+      'apt-get install -y openjdk-8-jre-headless git subversion mercurial openssh-client bash unzip curl make',
       'apt-get autoclean',
       # fix for https://bugs.launchpad.net/ubuntu/+source/ca-certificates-java/+bug/1396760
       '/var/lib/dpkg/info/ca-certificates-java.postinst configure'
@@ -138,7 +138,7 @@ create_user_and_group_cmd = [
       "echo deb 'http://ppa.launchpad.net/openjdk-r/ppa/ubuntu trusty main' > /etc/apt/sources.list.d/openjdk-ppa.list",
       'apt-key adv --keyserver keyserver.ubuntu.com --recv-keys DA1A4A13543B466853BAF164EB9B1D8886F44E2A',
       'apt-get update',
-      'apt-get install -y openjdk-8-jre-headless git subversion mercurial openssh-client bash unzip curl',
+      'apt-get install -y openjdk-8-jre-headless git subversion mercurial openssh-client bash unzip curl make',
       'apt-get autoclean',
       # fix for https://bugs.launchpad.net/ubuntu/+source/ca-certificates-java/+bug/1396760
       '/var/lib/dpkg/info/ca-certificates-java.postinst configure'
@@ -153,7 +153,7 @@ create_user_and_group_cmd = [
       "echo deb 'http://ppa.launchpad.net/openjdk-r/ppa/ubuntu xenial main' > /etc/apt/sources.list.d/openjdk-ppa.list",
       'apt-key adv --keyserver keyserver.ubuntu.com --recv-keys DA1A4A13543B466853BAF164EB9B1D8886F44E2A',
       'apt-get update',
-      'apt-get install -y openjdk-8-jre-headless git subversion mercurial openssh-client bash unzip curl',
+      'apt-get install -y openjdk-8-jre-headless git subversion mercurial openssh-client bash unzip curl make',
       'apt-get autoclean'
     ]
   },
@@ -164,7 +164,7 @@ create_user_and_group_cmd = [
     create_user_and_group: create_user_and_group_cmd,
     before_install: [
       'yum update -y',
-      'yum install -y java-1.8.0-openjdk-headless git mercurial subversion openssh-clients bash unzip curl',
+      'yum install -y java-1.8.0-openjdk-headless git mercurial subversion openssh-clients bash unzip curl make',
       'yum clean all'
     ]
   },
@@ -175,7 +175,7 @@ create_user_and_group_cmd = [
     create_user_and_group: create_user_and_group_cmd,
     before_install: [
       'yum update -y',
-      'yum install -y java-1.8.0-openjdk-headless git mercurial subversion openssh-clients bash unzip curl',
+      'yum install -y java-1.8.0-openjdk-headless git mercurial subversion openssh-clients bash unzip curl make',
       'yum clean all'
     ]
   }
