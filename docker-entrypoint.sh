@@ -107,6 +107,13 @@ if [ "$1" = '/go-agent/agent.sh' ]; then
       try chown go:go "${VOLUME_DIR}/config/agent-logback-include.xml"
     fi
 
+    # Detect the magic hostname rancher, and then create a hostname that reflects the actual docker host. 
+    if [ "${AGENT_AUTO_REGISTER_HOSTNAME}" = "rancher" ]; then
+      MYNAME=`curl -sSL http://rancher-metadata.rancher.internal/latest/self/host/name`
+      MYINDEX=`curl -sSL http://rancher-metadata.rancher.internal/latest/self/container/service_index`
+      AGENT_AUTO_REGISTER_HOSTNAME="${MYNAME}_${MYINDEX}"
+    fi
+
     setup_autoregister_properties_file "${AGENT_WORK_DIR}/config/autoregister.properties"
     try exec /usr/local/sbin/tini -- /usr/local/sbin/gosu go "$0" "$@"
   fi
